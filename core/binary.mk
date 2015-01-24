@@ -9,6 +9,13 @@
 include $(BUILD_SYSTEM)/base_rules.mk
 #######################################
 
+##################SABERMOD#################
+ifdef SM_VENDOR
+  # Include sabermod build system configs
+  include $(SM_VENDOR)/build/sm.mk
+endif
+###########################################
+
 ##################################################
 # Compute the dependency of the shared libraries
 ##################################################

@@ -35,7 +35,8 @@ CLANG_CONFIG_arm_UNKNOWN_CFLAGS := \
   -fno-strict-volatile-bitfields \
   -fno-tree-copy-prop \
   -fno-tree-loop-optimize \
-  -Wa,--noexecstack
+  -Wa,--noexecstack \
+  -mfpu=neon-vfpv4
 
 define subst-clang-incompatible-arm-flags
   $(subst -march=armv5te,-march=armv5t,\
