@@ -11,6 +11,7 @@ CORTEX_A15_TYPE := \
 	krait \
 	denver
 
+ifndef USE_GCC_DEFAULTS
 ifneq (,$(filter $(CORTEX_A15_TYPE),$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
 	# TODO: krait and denver is not a cortex-a15, we set the variant to cortex-a15 so that
 	#       hardware divide operations are generated for arm binaries. This should be removed and a
@@ -39,6 +40,9 @@ else
 		-Wl,--fix-cortex-a8
 endif
 endif
+endif
+else
+	arch_variant_cflags := $(USE_GCC_DEFAULTS)
 endif
 
 # arm64 doesn't like cortex-a15 in the kernel
