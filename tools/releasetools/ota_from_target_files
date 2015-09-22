@@ -563,15 +563,13 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   device_specific.FullOTA_InstallBegin()
 
   system_progress = 0.75
-
-  script.Print("______          _            /\   /\    ")
-  script.Print("|     \        | |           \ \ / /    ")
-  script.Print("| |_/ /__ _  __| | ___  _ __  \ V /     ")
-  script.Print("|    // _` |/ _` |/ _ \| '_ \ /   \     ")
-  script.Print("| |\ \ (_| | (_| | (_) | | | / /^\ \    ")
-  script.Print("\_| \_\__,_|\__,_|\___/|_| |_\/   \/    ")
-  script.Print("Radioactive Power, Elemental simplicity.")
-  script.Print(" ")
+ script.Print("______          _            __   __    ")
+ script.Print("| ___ \        | |           \ \ / /    ")
+ script.Print("| |_/ /__ _  __| | ___  _ __  \ V /     ")
+ script.Print("|    // _` |/ _` |/ _ \| '_ \ /   \     ")
+ script.Print("| |\ \ (_| | (_| | (_) | | | / /^\ \    ")
+ script.Print("\_| \_\__,_|\__,_|\___/|_| |_\/   \/    ")
+ script.Print("Radioactive Power, Elemental simplicity.")
  
   if OPTIONS.wipe_user_data:
     system_progress -= 0.1
@@ -612,8 +610,13 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
       common.ZipWriteStr(output_zip, "recovery/" + fn, data)
       system_items.Get("system/" + fn, dir=False)
 
+<<<<<<< HEAD
 #    common.MakeRecoveryPatch(OPTIONS.input_tmp, output_sink,
 #                             recovery_img, boot_img)
+=======
+    common.MakeRecoveryPatch(OPTIONS.input_tmp, output_sink,
+                             recovery_img, boot_img)
+>>>>>>> 0eb12df... releasetools: Add RadonX ASCII Art
 
     system_items.GetMetadata(input_zip)
     system_items.Get("system").SetPermissions(script)
@@ -642,7 +645,11 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
 
   if block_based:
+<<<<<<< HEAD
     script.Print("Flashing SuperSU...")
+=======
+    script.Print("Rooting device...")
+>>>>>>> 0eb12df... releasetools: Add RadonX ASCII Art
     common.ZipWriteStr(output_zip, "supersu/supersu.zip",
                    ""+input_zip.read("SYSTEM/addon.d/SuperSU.zip"))
     script.FlashSuperSU()
@@ -1153,6 +1160,7 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
   updating_boot = (not OPTIONS.two_step and
                    (source_boot.data != target_boot.data))
 
+<<<<<<< HEAD
 #  source_recovery = common.GetBootableImage(
 #      "/tmp/recovery.img", "recovery.img", OPTIONS.source_tmp, "RECOVERY",
 #      OPTIONS.source_info_dict)
@@ -1160,6 +1168,14 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
 #      "/tmp/recovery.img", "recovery.img", OPTIONS.target_tmp, "RECOVERY")
 #  updating_recovery = (source_recovery.data != target_recovery.data)
   updating_recovery = false
+=======
+  source_recovery = common.GetBootableImage(
+      "/tmp/recovery.img", "recovery.img", OPTIONS.source_tmp, "RECOVERY",
+      OPTIONS.source_info_dict)
+  target_recovery = common.GetBootableImage(
+      "/tmp/recovery.img", "recovery.img", OPTIONS.target_tmp, "RECOVERY")
+  updating_recovery = (source_recovery.data != target_recovery.data)
+>>>>>>> 0eb12df... releasetools: Add RadonX ASCII Art
 
   # Here's how we divide up the progress bar:
   #  0.1 for verifying the start state (PatchCheck calls)
