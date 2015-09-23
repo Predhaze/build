@@ -563,13 +563,14 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   device_specific.FullOTA_InstallBegin()
 
   system_progress = 0.75
- script.Print("______          _            __   __    ")
- script.Print("| ___ \        | |           \ \ / /    ")
- script.Print("| |_/ /__ _  __| | ___  _ __  \ V /     ")
- script.Print("|    // _` |/ _` |/ _ \| '_ \ /   \     ")
- script.Print("| |\ \ (_| | (_| | (_) | | | / /^\ \    ")
- script.Print("\_| \_\__,_|\__,_|\___/|_| |_\/   \/    ")
- script.Print("Radioactive Power, Elemental simplicity.")
+  script.Print("______          _            __   __    ")
+  script.Print("|     \        | |           \ \ / /    ")
+  script.Print("| |_/ /__ _  __| | ___  _ __  \ V /     ")
+  script.Print("|    // _` |/ _` |/ _ \| '_ \ /   \     ")
+  script.Print("| |\ \ (_| | (_| | (_) | | | / /^\ \    ")
+  script.Print("\_| \_\__,_|\__,_|\___/|_| |_\/   \/    ")
+  script.Print("Radioactive Power, Elemental simplicity.")
+  script.Print(" ")
  
   if OPTIONS.wipe_user_data:
     system_progress -= 0.1
