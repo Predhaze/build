@@ -564,7 +564,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   system_progress = 0.75
 
-  script.Print("______          _            __   __    ")
+  script.Print("______          _            /\   /\    ")
   script.Print("|     \        | |           \ \ / /    ")
   script.Print("| |_/ /__ _  __| | ___  _ __  \ V /     ")
   script.Print("|    // _` |/ _` |/ _ \| '_ \ /   \     ")
