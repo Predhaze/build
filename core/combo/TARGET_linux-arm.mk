@@ -87,7 +87,7 @@ $(combo_2nd_arch_prefix)TARGET_STRIP := $($(combo_2nd_arch_prefix)TARGET_TOOLS_P
 
 # Compiler linkers
 $(combo_2nd_arch_prefix)TARGET_LD := $($(combo_2nd_arch_prefix)TARGET_TOOLS_PREFIX)ld$(HOST_EXECUTABLE_SUFFIX)
-ifeq ($(ENABLE_GOLD_LINKER),true)
+ifneq ($(DISABLE_GOLD_LINKER),true)
   # The gold linker uses much less memory and greatly improves compile time of large projects.
   $(combo_2nd_arch_prefix)TARGET_LD := $($(combo_2nd_arch_prefix)TARGET_TOOLS_PREFIX)ld.gold$(HOST_EXECUTABLE_SUFFIX)
 endif
