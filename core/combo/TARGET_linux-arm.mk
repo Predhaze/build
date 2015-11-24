@@ -45,7 +45,7 @@ endif
 else
 $(combo_2nd_arch_prefix)TARGET_AND_GCC_VERSION := $(TARGET_SM_AND)
 ifeq (1,$(words $(filter 4.9 5.% 6.%, $(TARGET_SM_AND))))
-$(combo_2nd_arch_prefix)TARGET_LEGACY_GCC_VERSION := 4.8
+$(combo_2nd_arch_prefix)TARGET_LEGACY_GCC_VERSION := 4.9
 endif
 endif
 endif
