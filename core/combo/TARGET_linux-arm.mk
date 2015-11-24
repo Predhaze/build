@@ -50,7 +50,7 @@ endif
 
 # Decouple kernel compiler version from android compiler version
 ifeq ($(strip $(TARGET_SM_KERNEL)),)
-$(combo_2nd_arch_prefix)TARGET_KERNEL_GCC_VERSION := $($(combo_2nd_arch_prefix)TARGET_AND_GCC_VERSION)
+$(combo_2nd_arch_prefix)TARGET_KERNEL_GCC_VERSION := 4.8
 else
 $(combo_2nd_arch_prefix)TARGET_KERNEL_GCC_VERSION := $(TARGET_SM_KERNEL)
 endif

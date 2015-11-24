@@ -52,7 +52,7 @@ ifeq (denver,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT))
 endif
 
 arch_variant_cflags += \
-    -mfloat-abi=hardfp \
+    -mfloat-abi=softfp
 
 # For neon vfpv4 type, override -mfpu=neon with -mfpu=neon-vfpv4
 # Have the clang compiler ignore unknow flag option -mfpu=neon-vfpv4
