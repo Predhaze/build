@@ -9,13 +9,6 @@
 include $(BUILD_SYSTEM)/base_rules.mk
 #######################################
 
-##################SABERMOD#################
-ifdef SM_VENDOR
-  # Include sabermod build system configs
-  include $(SM_VENDOR)/build/sm.mk
-endif
-###########################################
-
 ##################################################
 # Compute the dependency of the shared libraries
 ##################################################
@@ -174,6 +167,13 @@ endif
 ifdef LOCAL_CLANG_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)
 my_clang := $(strip $(LOCAL_CLANG_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)))
 endif
+
+##################SABERMOD#################
+ifdef SM_VENDOR
+  # Include sabermod build system configs
+  include $(SM_VENDOR)/build/sm.mk
+endif
+###########################################
 
 # clang is enabled by default for host builds
 # enable it unless we've specifically disabled clang above
