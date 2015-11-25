@@ -43,13 +43,6 @@ ifeq ($(my_sanitize),never)
   my_sanitize :=
 endif
 
-# Sanitizers can only be used with clang.
-ifneq ($(my_clang),true)
-  ifneq ($(my_sanitize),)
-    $(error $(LOCAL_PATH): $(LOCAL_MODULE): Use of sanitizers requires LOCAL_CLANG := true)
-  endif
-endif
-
 ifneq ($(filter default-ub,$(my_sanitize)),)
   my_sanitize := $(CLANG_DEFAULT_UB_CHECKS)
   my_ldlibs += -ldl
