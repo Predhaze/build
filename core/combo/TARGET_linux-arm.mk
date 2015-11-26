@@ -98,17 +98,17 @@ endif
 $(combo_2nd_arch_prefix)TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
 # Modules can choose to compile some source as arm.
-$(combo_2nd_arch_prefix)TARGET_arm_CFLAGS := -fomit-frame-pointer
+$(combo_2nd_arch_prefix)TARGET_arm_CFLAGS := -fomit-frame-pointer -marm -fno-strict-aliasing 
 
 ifneq ($(strip $(LOCAL_O3)),true)
   $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS += -O2
 endif
 ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
-  $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS += -fstrict-aliasing
+  $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS +=
 endif
 
 # Modules can choose to compile some source as thumb.
-$(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -mthumb \
+$(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -marm \
                         -fomit-frame-pointer \
                         -fno-strict-aliasing
 
