@@ -36,7 +36,11 @@ CLANG_CONFIG_arm_UNKNOWN_CFLAGS := \
   -fno-tree-copy-prop \
   -fno-tree-loop-optimize \
   -Wa,--noexecstack \
-  -mfpu=neon-vfpv4
+  -mfpu=neon-vfpv4 \
+  -fipa-sra \
+  -fipa-cp \
+  -fipa-cp-clone \
+  -fipa-pta
 
 define subst-clang-incompatible-arm-flags
   $(subst -march=armv5te,-march=armv5t,\
