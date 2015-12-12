@@ -33,4 +33,4 @@ PRODUCT_PACKAGES += \
     libGLESv2_emulation \
     libGLESv1_enc \
     qemu-props \
-    qemud
+    qemud \
