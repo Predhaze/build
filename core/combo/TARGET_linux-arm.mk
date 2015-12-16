@@ -48,7 +48,6 @@ ifeq (1,$(words $(filter 4.9 5.% 6.%, $(TARGET_SM_AND))))
 $(combo_2nd_arch_prefix)TARGET_LEGACY_GCC_VERSION := 4.9
 endif
 endif
-endif
 
 # Decouple kernel compiler version from android compiler version
 ifeq ($(strip $(TARGET_SM_KERNEL)),)
