@@ -168,6 +168,9 @@ ifdef LOCAL_CLANG_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)
 my_clang := $(strip $(LOCAL_CLANG_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)))
 endif
 
+# Include DragonTC clang config
+include $(BUILD_SYSTEM)/dragontc.mk
+
 ##################SABERMOD#################
 ifdef SM_VENDOR
   # Include sabermod build system configs
