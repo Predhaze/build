@@ -25,6 +25,7 @@ POLLY := -mllvm -polly \
 
 DISABLE_POLLY_TARGET := \
 		$(LOCAL_DISABLE_POLLY_TARGET) \
+		recovery
 
 DISABLE_POLLY_HOST := \
                 $(LOCAL_DISABLE_POLLY_HOST) \
@@ -36,9 +37,15 @@ ifneq (,$(filter true,$(LOCAL_CLANG)))
   ifeq (,$(filter true,$(LOCAL_IS_HOST_MODULE)))
     ifneq (1,$(words $(filter $(DISABLE_POLLY_TARGET),$(LOCAL_MODULE))))
       ifdef LOCAL_CFLAGS
-        LOCAL_CFLAGS += $(POLLY)
+        LOCAL_CFLAGS += -O3 $(POLLY)
       else
-        LOCAL_CFLAGS := $(POLLY)
+        LOCAL_CFLAGS := -O3 $(POLLY)
+      endif
+    else
+      ifdef LOCAL_CFLAGS
+        LOCAL_CFLAGS += -O2
+      else
+        LOCAL_CFLAGS := -O2
       endif
     endif
   endif
@@ -49,10 +56,15 @@ ifneq (,$(filter true,$(LOCAL_CLANG)))
   ifneq (,$(filter true,$(LOCAL_IS_HOST_MODULE)))
     ifneq (1,$(words $(filter $(DISABLE_POLLY_HOST),$(LOCAL_MODULE))))
       ifdef LOCAL_CFLAGS
-        LOCAL_CFLAGS += $(POLLY)
+        LOCAL_CFLAGS += -O3 $(POLLY)
       else
-        LOCAL_CFLAGS := $(POLLY)
+        LOCAL_CFLAGS := -O3 $(POLLY)
       endif
+    else
+      ifdef LOCAL_CFLAGS
+        LOCAL_CFLAGS += -O2
+      else
+        LOCAL_CFLAGS := -O2
     endif
   endif
 endif
