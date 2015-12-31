@@ -23,14 +23,8 @@ POLLY := -mllvm -polly \
          -mllvm -polly-opt-fusion=max \
          -mllvm -polly-opt-maximize-bands=yes
 
-DISABLE_POLLY_TARGET := \
-		$(LOCAL_DISABLE_POLLY_TARGET) \
-		recovery
-
-DISABLE_POLLY_HOST := \
-                $(LOCAL_DISABLE_POLLY_HOST) \
-		libicuuc-host_32 \
-		libjavacore 
+DISABLE_POLLY := \
+		$(LOCAL_DISABLE_POLLY) 
 
 # Check if we should enable Polly on target modules.
 ifneq (,$(filter true,$(LOCAL_CLANG)))
@@ -47,24 +41,6 @@ ifneq (,$(filter true,$(LOCAL_CLANG)))
       else
         LOCAL_CFLAGS := -O2
       endif
-    endif
-  endif
-endif
-
-# Check if we should enable Polly on host modules.
-ifneq (,$(filter true,$(LOCAL_CLANG)))
-  ifneq (,$(filter true,$(LOCAL_IS_HOST_MODULE)))
-    ifneq (1,$(words $(filter $(DISABLE_POLLY_HOST),$(LOCAL_MODULE))))
-      ifdef LOCAL_CFLAGS
-        LOCAL_CFLAGS += -O3 $(POLLY)
-      else
-        LOCAL_CFLAGS := -O3 $(POLLY)
-      endif
-    else
-      ifdef LOCAL_CFLAGS
-        LOCAL_CFLAGS += -O2
-      else
-        LOCAL_CFLAGS := -O2
     endif
   endif
 endif
