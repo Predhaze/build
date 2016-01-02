@@ -14,17 +14,26 @@
 
 # Polly flags for use with Clang
 POLLY := -mllvm -polly \
-         -mllvm -polly-parallel -lgomp \
-         -mllvm -polly-parallel-force \
-	 -mllvm -polly-allow-nonaffine=1\
-         -mllvm -polly-ast-detect-parallel \
-         -mllvm -polly-no-early-exit \
-         -mllvm -polly-vectorizer=stripmine \
-         -mllvm -polly-opt-fusion=max \
-         -mllvm -polly-opt-maximize-bands=yes
+  -mllvm -polly-parallel -lgomp \
+  -mllvm -polly-parallel-force \
+  -mllvm -polly-allow-nonaffine=1\
+  -mllvm -polly-ast-detect-parallel \
+  -mllvm -polly-no-early-exit \
+  -mllvm -polly-vectorizer=stripmine \
+  -mllvm -polly-opt-fusion=max \
+  -mllvm -polly-opt-maximize-bands=yes
 
+# Modules that dont work with Polly
 DISABLE_POLLY := \
-		$(LOCAL_DISABLE_POLLY) 
+  libpng \
+  libfuse \
+  libfuse_static \
+  $(LOCAL_DISABLE_POLLY) 
+
+# Include SaberMod ARM Mode if not already used
+#ifndef SM_VENDOR
+  include $(BUILD_SYSTEM)/arm.mk
+#endif
 
 # Check if we should enable Polly on target modules.
 ifneq (,$(filter true,$(LOCAL_CLANG)))
