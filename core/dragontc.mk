@@ -31,9 +31,9 @@ DISABLE_POLLY := \
   $(LOCAL_DISABLE_POLLY) 
 
 # Include SaberMod ARM Mode if not already used
-#ifndef SM_VENDOR
+ifdef USE_ARM_MODE
   include $(BUILD_SYSTEM)/arm.mk
-#endif
+endif
 
 # Check if we should enable Polly on target modules.
 ifneq (,$(filter true,$(LOCAL_CLANG)))
