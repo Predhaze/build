@@ -1501,9 +1501,9 @@ function caf()
         return 1;
     fi;
     if [ "$2" != "device/*" ]; then
-        url_base="git://codeaurora.org/quic/la/platform/"
+        caf_base="git://codeaurora.org/quic/la/platform/"
     else
-        url_base="git://codeaurora.org/quic/la/"
+        caf_base="git://codeaurora.org/quic/la/"
     fi;
     if [ -z "$3" ]; then
         caf_branch="LA.BF.1.1.3_rb1.7"
@@ -1511,13 +1511,13 @@ function caf()
         caf_branch="$3"
     fi;
     if [ "$1" = "clone" ]; then
-        git clone $url_base$2 -b $caf_branch $2;
+        git clone $caf_base$2 -b $caf_branch --single-branch $2;
     elif [ "$1" = "fetch" ]; then
         cd $2;
-        git fetch $url_base$2 $caf_branch;
+        git fetch $caf_base$2 $caf_branch;
     elif [ "$1" = "pull" ]; then
         cd $2;
-        git pull $url_base$2 $caf_branch;
+        git pull $caf_base$2 $caf_branch;
     else
         echo "Usage: caf <repo path> [OPTIONAL:] <branch>"
     fi;
