@@ -18,6 +18,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - sepgrep: Greps on all local sepolicy files.
 - sgrep:   Greps on all local source files.
 - godir:   Go to the directory containing a file.
+- caf:     Clone, fetch, or pull a repo from caf.
 
 Environemnt options:
 - SANITIZE_HOST: Set to 'true' to use ASAN for all host modules. Note that
@@ -1492,6 +1493,36 @@ function make()
     echo
     return $ret
 }
+
+function caf()
+{
+    if [ "$PWD" != "$(gettop)" ]; then
+        echo "ERROR: Must be run from top of source.";
+        return 1;
+    fi;
+    if [ "$2" != "device/*" ]; then
+        url_base="git://codeaurora.org/quic/la/platform/"
+    else
+        url_base="git://codeaurora.org/quic/la/"
+    fi;
+    if [ -z "$3" ]; then
+        caf_branch="LA.BF.1.1.3_rb1.7"
+    else
+        caf_branch="$3"
+    fi;
+    if [ "$1" = "clone" ]; then
+        git clone $url_base$2 -b $caf_branch $2;
+    elif [ "$1" = "fetch" ]; then
+        cd $2;
+        git fetch $url_base$2 $caf_branch;
+    elif [ "$1" = "pull" ]; then
+        cd $2;
+        git pull $url_base$2 $caf_branch;
+    else
+        echo "Usage: caf <repo path> [OPTIONAL:] <branch>"
+    fi;
+}
+
 
 if [ "x$SHELL" != "x/bin/bash" ]; then
     case `ps -o command -p $$` in
