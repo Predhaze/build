@@ -1546,7 +1546,7 @@ function rnx()
         cd $2;
         git pull $rnx_base$form $rnx_branch;
     else
-        echo "Usage: rnx <repo path> [OPTIONAL:] <branch>"
+        echo "Usage: rnx [clone/fetch/pull] <repo path> [OPTIONAL:<branch>]"
     fi;
 }
 
