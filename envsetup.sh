@@ -1523,6 +1523,33 @@ function caf()
     fi;
 }
 
+function rnx()
+{
+    if [ "$PWD" != "$(gettop)" ]; then
+        echo "ERROR: Must be run from top of source.";
+        return 1;
+    fi;
+    if [ -z "$3" ]; then
+        rnx_branch="mm"
+    else
+        rnx_branch="$3"
+    fi;
+    form=$(echo $2 | sed -e 's/\//_/g')
+    rnx_base="https://github.com/RadonX-MM/"
+
+    if [ "$1" = "clone" ]; then
+        git clone $rnx_base$form -b $rnx_branch --single-branch $2;
+    elif [ "$1" = "fetch" ]; then
+        cd $2;
+        git fetch $rnx_base$form $rnx_branch;
+    elif [ "$1" = "pull" ]; then
+        cd $2;
+        git pull $rnx_base$form $rnx_branch;
+    else
+        echo "Usage: rnx <repo path> [OPTIONAL:] <branch>"
+    fi;
+}
+
 
 if [ "x$SHELL" != "x/bin/bash" ]; then
     case `ps -o command -p $$` in
