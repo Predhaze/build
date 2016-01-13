@@ -1506,7 +1506,7 @@ function caf()
         caf_base="git://codeaurora.org/quic/la/"
     fi;
     if [ -z "$3" ]; then
-        caf_branch="LA.BF.1.1.3_rb1.7"
+        caf_branch="LA.BF.1.1.3_rb1.8"
     else
         caf_branch="$3"
     fi;
