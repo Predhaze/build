@@ -1478,9 +1478,9 @@ function make()
     fi
     echo
     if [ $ret -eq 0 ] ; then
-        echo -n -e "${color_success}#### make completed successfully "
+        echo -n -e "${color_success}#### RadonX has build successfully! #### "
     else
-        echo -n -e "${color_failed}#### make failed to build some targets "
+        echo -n -e "${color_failed}#### RadonX has failed to build! #### "
     fi
     if [ $hours -gt 0 ] ; then
         printf "(%02g:%02g:%02g (hh:mm:ss))" $hours $mins $secs
